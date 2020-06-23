@@ -1,0 +1,72 @@
+@font-face {
+  font-family: OpenSansRegular;
+  src: url("../fonts/Open_Sans/OpenSans-Regular.ttf");
+}
+@font-face {
+  font-family: OpenSansSemiBold;
+  src: url("../fonts/Open_Sans/OpenSans-SemiBold.ttf");
+}
+#webchat.chat .messages-container .message {
+  margin: 10px 0;
+}
+#webchat.chat .conversation-container .response {
+  border-radius: 0 19px 19px 19px;
+  background-color: #E4F5FF;
+  font-family: OpenSansRegular;
+  font-size: 16px;
+  line-height: 26px;
+  color: #152FBF;
+  padding: 15px 19px;
+}
+#webchat.chat .conversation-container .group-message.from-response .message:not(:first-child):not(:last-child):not(:last-child) {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+#webchat.chat .conversation-container .group-message.from-response .message:not(:first-child) .response {
+  border-radius: 19px;
+}
+#webchat.chat .conversation-container .group-message.from-response .message:first-child:not(:only-child) .response {
+  border-radius: 0 19px 19px 19px;
+}
+#webchat.chat .conversation-container .group-message.from-response .message:first-child:not(:only-child) {
+  margin-bottom: 12px;
+}
+#webchat.chat .conversation-container .group-message.from-response .message:not(:first-child):not(:only-child).with-avatar {
+  margin-left: 43px;
+}
+#webchat.chat .conversation-container .replies {
+  margin: 15px 0 0 0;
+}
+#webchat.chat .conversation-container .reply {
+  width: 100%;
+  border-radius: 19px;
+  border: 2px solid #152FBF;
+  font-family: OpenSansRegular;
+  font-size: 16px;
+  color: #152FBF;
+  padding: 15px;
+}
+#webchat.chat .conversation-container .client {
+  background-color: #152FBF;
+  border-radius: 19px;
+  font-family: OpenSansRegular;
+  font-size: 16px;
+  line-height: 26px;
+  color: #FFFFFF;
+  padding: 15px 19px;
+  position: relative;
+  margin: 10px 46px 20px auto;
+}
+#webchat.chat .conversation-container .client:before {
+  content: "";
+  background: url("../images/userAvatar.svg") no-repeat center center;
+  width: 36px;
+  height: 36px;
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-right: -46px;
+}
+
+/*# sourceMappingURL=chat.css.map */

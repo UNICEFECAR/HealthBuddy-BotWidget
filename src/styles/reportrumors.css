@@ -1,0 +1,64 @@
+@import "font.css";
+#webchat.reportrumors .messages-container .avatar {
+  display: none;
+}
+#webchat.reportrumors .conversation-container .message {
+  margin: 20px 0;
+}
+#webchat.reportrumors .conversation-container .message .response {
+  border-radius: 19px;
+  font-family: OpenSansRegular;
+  font-size: 28px;
+  background-color: #FFFFFF;
+  line-height: 36px;
+  color: #152FBF;
+  padding: 29px 24px;
+}
+#webchat.reportrumors .conversation-container .group-message.from-response .message:first-child:not(:only-child) {
+  margin-bottom: 20px;
+}
+#webchat.reportrumors .conversation-container .group-message.from-response .message:first-child:not(:only-child) .response {
+  border-radius: 19px;
+}
+#webchat.reportrumors .conversation-container .group-message.from-response .message:not(:first-child):not(:only-child).with-avatar {
+  margin-left: 0;
+}
+#webchat.reportrumors .conversation-container .group-message.from-response .message:not(:first-child):not(:last-child):not(:last-child) {
+  margin-bottom: 20px;
+}
+#webchat.reportrumors .conversation-container .group-message.from-response .message:last-child:not(:only-child) {
+  margin-top: 0;
+}
+#webchat.reportrumors .conversation-container .group-message.from-response .message:not(:first-child) .response {
+  border-radius: 19px;
+}
+#webchat.reportrumors .conversation-container .group-message.from-response .message:not(:first-child):not(:last-child):not(:last-child) .response {
+  border-radius: 19px;
+}
+#webchat.reportrumors .conversation-container .client {
+  background-color: #152FBF;
+  border-radius: 19px;
+  font-family: OpenSansRegular;
+  font-size: 16px;
+  line-height: 26px;
+  color: #FFFFFF;
+  padding: 15px 19px;
+  position: relative;
+  margin: 0 51px 0 0;
+  width: 100%;
+}
+#webchat.reportrumors .conversation-container .replies {
+  margin: 20px 18px 0 18px;
+}
+#webchat.reportrumors .conversation-container .reply {
+  width: 100%;
+  border-radius: 19px;
+  border: 2px solid #152FBF;
+  font-family: OpenSansRegular;
+  font-size: 16px;
+  color: #152FBF;
+  padding: 15px;
+  margin: 5px 20px;
+}
+
+/*# sourceMappingURL=reportrumors.css.map */

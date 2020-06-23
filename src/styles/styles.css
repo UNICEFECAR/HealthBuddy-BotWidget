@@ -1,0 +1,52 @@
+@import "chat.css";
+@import "polls.css";
+@import "reportrumors.css";
+body {
+  background-color: transparent;
+  font-family: OpenSansRegular, Verdana, sans-serif;
+}
+
+#webchat .messages-container {
+  background-color: transparent;
+  padding: 18px !important;
+}
+#webchat .messages-container .avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 0;
+  margin-top: 4px;
+}
+#webchat .conversation-container .poweredby-container {
+  display: none;
+}
+#webchat .conversation-container .header {
+  background-color: #152FBF;
+}
+#webchat .launcher {
+  background-color: #152FBF;
+}
+#webchat div#wave .dot {
+  background-color: #8DD3FF;
+}
+#webchat div#wave .dot:nth-child(2) {
+  background-color: #152FBF;
+}
+#webchat div#wave .dot:nth-child(3) {
+  background-color: #1CABE2;
+}
+@media screen and (max-width: 800px) {
+  #webchat .conversation-container {
+    box-shadow: none;
+  }
+  #webchat .conversation-container .header-and-loading {
+    display: none;
+  }
+  #webchat .conversation-container .quickReplies-container {
+    width: 100%;
+  }
+  #webchat .conversation-container .sender {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

@@ -1,20 +1,65 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+#HealthBuddy chatbot
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+##Overview
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+Can be used in 3 modes:
+- chat
+- poll
+- report rumors
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+##Launch
+
+1. run 'npm run-script build'
+2. run 'npm start'
+3. open index.html from 'dist' folder
+
+
+##Development
+
+**Webview – JS code interaction** 
+
+- `dispatchNative(string message)` is described on backend side. Calls native code from JS. 
+- `dispatchWeb(string message)` calls JS code from native.
+
+**Events which are used as parameters in functions mentioned above:**
+ 
+#####`Loaded:` 
+ `{"eventName": "loaded"} `
+
+##### `Show input:` 
+`{"eventName": "showInput"} `
+
+##### `Hide input:` 
+`{"eventName": "hideInput"}` 
+
+##### `Init:` 
+````
+// chat
+{"eventName": "init", "payload": "base64 string"}  
+Payload: {"initPhrase": "chat", "language": "en"} 
+Example: {"eventName":"init", "payload": "eyJpbml0UGhyYXNlIjoiaGVsbG8gZW4ifQ=="}
+
+// poll 
+{"eventName": "init", "payload": "base64 string"}  
+Payload: {"initPhrase": "polls", "language": "en"} 
+
+// rumours 
+{"eventName": "init", "payload": "base64 string"}  
+Payload: {"initPhrase": "reportrumors", "language": "en"} 
+````
+
+##### `Send input text:` 
+
+````
+Message: {"eventName": "sendText", "payload": "base64 string"} 
+Payload: {"text": "string"}
+````
+
+
+##### `Operation result:` 
+````
+Message: {"eventName": "operationResult", "payload": "base64 string"} 
+Payload: {"status": "success"} 
+Payload: {"status": "error", "errorCode": "1", "description": "Connection lost."}
+```` 

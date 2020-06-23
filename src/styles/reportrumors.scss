@@ -1,0 +1,89 @@
+@import "variables";
+@import "font.css";
+
+#webchat {
+  &.reportrumors {
+    .messages-container {
+      .avatar {
+        display: none;
+      }
+    }
+
+    .conversation-container {
+      .message {
+        margin: 20px 0;
+
+        .response {
+          border-radius: $border-radius;
+          font-family: OpenSansRegular;
+          font-size: 28px;
+          background-color: $white-color;
+          line-height: 36px;
+          color: $theme-color2;
+          padding: 29px 24px;
+        }
+      }
+
+      .group-message.from-response {
+        .message {
+          &:first-child:not(:only-child) {
+            margin-bottom: 20px;
+
+            .response {
+              border-radius: $border-radius;
+            }
+          }
+
+          &:not(:first-child):not(:only-child).with-avatar {
+            margin-left: 0;
+          }
+
+          &:not(:first-child):not(:last-child):not(:last-child) {
+            margin-bottom: 20px;
+          }
+
+          &:last-child:not(:only-child) {
+            margin-top: 0;
+          }
+
+          &:not(:first-child) .response {
+            border-radius: $border-radius;
+          }
+
+          &:not(:first-child):not(:last-child):not(:last-child) .response {
+            border-radius: $border-radius;
+          }
+        }
+      }
+
+      .client {
+        background-color: $theme-color2;
+        border-radius: $border-radius;
+        font-family: OpenSansRegular;
+        font-size: $fontSize;
+        line-height: 26px;
+        color: $white-color;
+        padding: 15px 19px;
+        position: relative;
+        margin: 0 51px 0 0;
+        width: 100%;
+      }
+
+      .replies {
+        margin: 20px 18px 0 18px;
+      }
+
+      .reply {
+        width: 100%;
+        border-radius: $border-radius;
+        border: 2px solid $theme-color2;
+        font-family: OpenSansRegular;
+        font-size: $fontSize;
+        color: $theme-color2;
+        padding: 15px;
+        margin: 5px 20px;
+      }
+    }
+  }
+}
+

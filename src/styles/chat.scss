@@ -1,0 +1,88 @@
+@import "variables";
+@import "font";
+
+#webchat {
+  &.chat {
+    .messages-container {
+      .message {
+        margin: 10px 0;
+      }
+    }
+
+    .conversation-container {
+      .response {
+        border-radius: 0 $border-radius $border-radius $border-radius;
+        background-color: $theme-color1;
+        font-family: OpenSansRegular;
+        font-size: $fontSize;
+        line-height: 26px;
+        color: $theme-color2;
+        padding: 15px 19px;
+      }
+
+      .group-message.from-response {
+        .message {
+          &:not(:first-child):not(:last-child):not(:last-child) {
+            margin-top: 8px;
+            margin-bottom: 8px;
+          }
+
+          &:not(:first-child) .response {
+            border-radius: $border-radius;
+          }
+
+          &:first-child:not(:only-child) .response {
+            border-radius: 0 $border-radius $border-radius $border-radius;
+          }
+
+          &:first-child:not(:only-child) {
+            margin-bottom: 12px;
+          }
+
+          &:not(:first-child):not(:only-child).with-avatar {
+            margin-left: 43px;
+          }
+        }
+      }
+
+      .replies {
+        margin: 15px 0 0 0;
+      }
+
+      .reply {
+        width: 100%;
+        border-radius: $border-radius;
+        border: 2px solid $theme-color2;
+        font-family: OpenSansRegular;
+        font-size: $fontSize;
+        color: $theme-color2;
+        padding: 15px;
+      }
+
+      .client {
+        background-color: $theme-color2;
+        border-radius: $border-radius;
+        font-family: OpenSansRegular;
+        font-size: $fontSize;
+        line-height: 26px;
+        color: $white-color;
+        padding: 15px 19px;
+        position: relative;
+        margin: 10px 46px 20px auto;
+
+        &:before {
+          content: "";
+          background: url('../images/userAvatar.svg') no-repeat center center;
+          width: $avatarSize;
+          height: $avatarSize;
+          display: block;
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          margin-right: -46px;
+        }
+      }
+    }
+
+  }
+}
