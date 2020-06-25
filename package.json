@@ -1,5 +1,5 @@
 {
-  "name": "HealthBuddy chatbot",
+  "name": "health-buddy-chatbot",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
