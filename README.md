@@ -10,9 +10,10 @@ Can be used in 3 modes:
 
 ##Launch
 
-1. run 'npm run-script build'
-2. run 'npm start'
-3. open index.html from 'dist' folder
+1. run 'npm install'
+2. run 'npm run-script build'
+3. run 'npm start'
+4. open index.html from 'dist' folder
 
 
 ##Development
