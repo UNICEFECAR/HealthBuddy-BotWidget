@@ -1,7 +1,4 @@
 @import "font.css";
-#webchat.polls .messages-container {
-  background-color: #E4F5FF;
-}
 #webchat.polls .messages-container .avatar {
   display: none;
 }
@@ -91,29 +88,13 @@
   background: url("../images/mark.svg") no-repeat center center;
   position: absolute;
   top: 50%;
-  right: 10px;
+  right: 24px;
   margin-top: -7px;
   width: 14px;
   height: 14px;
+  background: #E4F5FF;
   border-radius: 50%;
   z-index: 2;
-}
-@media screen and (max-width: 800px) {
-  #webchat.polls .messages-container {
-    background-color: transparent;
-    /*        position: relative;
-            &:before {
-              content: "";
-              display: block;
-              position: absolute;
-              top: 0;
-              right: 0;
-              background: #1CABE2;
-              opacity: 0.1;
-              border-radius: 100px;
-              transform: rotate(128.45deg);
-            }*/
-  }
 }
 
 /*# sourceMappingURL=polls.css.map */

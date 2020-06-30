@@ -4,8 +4,6 @@
 #webchat {
   &.chat {
     .messages-container {
-      background-color: $chatBackground;
-
       .message {
         margin: 10px 0;
       }
@@ -86,10 +84,5 @@
       }
     }
 
-    @media screen and (max-width: $mobileResolution) {
-      .messages-container {
-        background-color: transparent;
-      }
-    }
   }
 }
