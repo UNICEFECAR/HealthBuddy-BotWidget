@@ -28,8 +28,8 @@ stages:
       displayName: 'npm install'
 
     - script: |
-        npm run-script build
-      displayName: 'npm run-script build'
+        npm run build
+      displayName: 'npm run build'
       
     - task: ArchiveFiles@2
       displayName: 'Archive files'
