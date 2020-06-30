@@ -4,6 +4,7 @@
 #webchat {
   &.reportrumors {
     .messages-container {
+      background-color: $theme-color1;
       .avatar {
         display: none;
       }
@@ -82,6 +83,11 @@
         color: $theme-color2;
         padding: 15px;
         margin: 5px 20px;
+      }
+    }
+    @media screen and (max-width: $mobileResolution) {
+      .messages-container {
+        background-color: transparent;
       }
     }
   }
