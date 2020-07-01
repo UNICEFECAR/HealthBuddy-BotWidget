@@ -2,12 +2,15 @@
 @import "polls.css";
 @import "reportrumors.css";
 body {
-  background-color: transparent;
   font-family: OpenSansRegular, Verdana, sans-serif;
+}
+@media screen and (max-width: 800px) {
+  body {
+    background-color: transparent;
+  }
 }
 
 #webchat .messages-container {
-  background-color: transparent;
   padding: 18px !important;
 }
 #webchat .messages-container .avatar {
@@ -35,6 +38,9 @@ body {
   background-color: #1CABE2;
 }
 @media screen and (max-width: 800px) {
+  #webchat .messages-container {
+    background-color: transparent;
+  }
   #webchat .conversation-container {
     box-shadow: none;
   }
