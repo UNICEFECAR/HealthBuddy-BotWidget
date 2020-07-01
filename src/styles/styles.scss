@@ -4,15 +4,13 @@
 @import "reportrumors.css";
 
 body {
+  background-color: transparent;
   font-family: OpenSansRegular, Verdana, sans-serif;
-
-  @media screen and (max-width: $mobileResolution) {
-    background-color: transparent;
-  }
 }
 
 #webchat {
   .messages-container {
+    background-color: transparent;
     padding: 18px !important;
 
     .avatar {
@@ -47,10 +45,7 @@ body {
     }
   }
 
-  @media screen and (max-width: $mobileResolution) {
-    .messages-container {
-      background-color: transparent;
-    }
+  @media screen and (max-width: 800px) {
     .conversation-container {
       box-shadow: none;
 
