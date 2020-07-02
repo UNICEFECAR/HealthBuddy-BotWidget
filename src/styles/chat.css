@@ -6,6 +6,9 @@
   font-family: OpenSansSemiBold;
   src: url("../fonts/Open_Sans/OpenSans-SemiBold.ttf");
 }
+#webchat.chat .messages-container {
+  background-color: #FAFAFA;
+}
 #webchat.chat .messages-container .message {
   margin: 10px 0;
 }
@@ -67,6 +70,11 @@
   right: 0;
   bottom: 0;
   margin-right: -46px;
+}
+@media screen and (max-width: 800px) {
+  #webchat.chat .messages-container {
+    background-color: transparent;
+  }
 }
 
 /*# sourceMappingURL=chat.css.map */

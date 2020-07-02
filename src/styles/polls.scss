@@ -4,6 +4,7 @@
 #webchat {
   &.polls {
     .messages-container {
+      background-color: $theme-color1;
       .avatar {
         display: none;
       }
@@ -115,15 +116,31 @@
             background: url("../images/mark.svg") no-repeat center center;
             position: absolute;
             top: 50%;
-            right: 24px;
+            right: 10px;
             margin-top: -7px;
             width: 14px;
             height: 14px;
-            background: $theme-color1;
             border-radius: 50%;
             z-index: 2;
           }
         }
+      }
+    }
+    @media screen and (max-width: 800px) {
+      .messages-container {
+        background-color: transparent;
+/*        position: relative;
+        &:before {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          background: #1CABE2;
+          opacity: 0.1;
+          border-radius: 100px;
+          transform: rotate(128.45deg);
+        }*/
       }
     }
   }
