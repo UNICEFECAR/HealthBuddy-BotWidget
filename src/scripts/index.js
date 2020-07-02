@@ -1,7 +1,6 @@
 import '../styles/styles.scss';
 import BotAvatarSVG from '../images/botAvatar.svg';
 
-/*const Map = require('es6-map');*/
 const WebChat = require('../scripts/bot.js');
 const $ = require('jquery');
 
@@ -159,7 +158,7 @@ window.dispatchWeb = (params) => {
         case SEND_TEXT:
             message = decodedPayloadObject[TEXT];
             if (message) {
-                WebChat.send("message", message);
+                WebChat.send(message, message);
                 message = "";
                 console.debug("--------> Message is sent");
             }
