@@ -58,13 +58,13 @@ const initWebchat = (initPayload) => {
             'connect': () => {
                 if (isMobile()) {
                     console.debug("--------> Connected to webchat");
-                    dispatchNative('{"eventName": "operationResult", "payload: "eyJzdGF0dXMiOiAic3VjY2VzcyJ9"}'); //success
+                    dispatchNative('{"eventName": "operationResult", "payload": "eyJzdGF0dXMiOiAic3VjY2VzcyJ9"}'); //success
                 }
             },
             'disconnect': () => {
                 if (isMobile()) {
                     console.debug("--------> Disconnected from webchat");
-                    dispatchNative('{"eventName": "operationResult", "payload: "eyJzdGF0dXMiOiAiZXJyb3IifQ==}');  //error
+                    dispatchNative('{"eventName": "operationResult", "payload": "eyJzdGF0dXMiOiAiZXJyb3IifQ=="}');  //error
                 }
             },
         },
