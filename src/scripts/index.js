@@ -17,9 +17,6 @@ const SEND_TEXT = "sendText";
 const INIT_PHRASE = "initPhrase";
 const TEXT = "text";
 
-const loaded = {
-    "eventName": "loaded"
-}
 const showInput = {
     "eventName": "showInput"
 };
@@ -176,10 +173,6 @@ window.dispatchWeb = (params) => {
 const dispatchWeb = window.dispatchWeb;
 
 const isPageLoaded = () => {
-    if (isMobile()) {
-        console.debug("--------> Page is loaded");
-        dispatchNative(JSON.stringify(loaded));
-    }
 
     // listen DOM changes and add 'selected' class for chosen reply
     const mutationObserver = new MutationObserver((mutations) => {
