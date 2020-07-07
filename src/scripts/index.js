@@ -1,3 +1,6 @@
+import "core-js";
+import 'regenerator-runtime/runtime';
+
 import '../styles/styles.scss';
 import BotAvatarSVG from '../images/botAvatar.svg';
 
@@ -35,7 +38,9 @@ const isMobile = () => {
     }
 }
 
-const dispatchNative = window.dispatchNative;
+const dispatchNative = function(s){
+    window.dispatchNative(s);
+}
 
 const initWebchat = (initPayload) => {
     sessionStorage.clear();

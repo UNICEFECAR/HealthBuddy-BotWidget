@@ -50,9 +50,9 @@ body {
   #webchat .conversation-container .quickReplies-container {
     width: 100%;
   }
-  #webchat .conversation-container .sender {
+/*  #webchat .conversation-container .sender {
     display: none;
-  }
+  }*/
 }
 
 /*# sourceMappingURL=styles.css.map */

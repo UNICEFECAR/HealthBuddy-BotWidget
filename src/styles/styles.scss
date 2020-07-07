@@ -1,7 +1,7 @@
 @import "variables";
-@import "chat.css";
-@import "polls.css";
-@import "reportrumors.css";
+@import "chat";
+@import "polls";
+@import "reportrumors";
 
 body {
   font-family: OpenSansRegular, Verdana, sans-serif;
@@ -48,6 +48,11 @@ body {
   }
 
   @media screen and (max-width: $mobileResolution) {
+/*    .widget-container.chat-open {
+      height: 50%;
+      top: 0;
+      bottom: initial;
+    }*/
     .messages-container {
       background-color: transparent;
     }

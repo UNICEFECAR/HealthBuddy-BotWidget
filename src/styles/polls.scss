@@ -86,11 +86,12 @@
         font-family: OpenSansRegular;
         font-size: $fontSize;
         color: $theme-color2;
-        padding: 19px 0;
+        padding: 19px 50px 19px 0;
         border-bottom: 1px dashed $theme-color3;
         border-radius: 0;
         justify-content: flex-start;
         position: relative;
+        text-align: left;
 
         &:after {
           content: "";
