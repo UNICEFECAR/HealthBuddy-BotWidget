@@ -36,8 +36,10 @@ const isMobile = () => {
 }
 
 const dispatchNative = function(s){
-    window.dispatchNative(s);
+    window["dispatchNative"](s);
 }
+
+const messages = document.getElementsByClassName("messages-container")[0];
 
 const initWebchat = (initPayload) => {
     sessionStorage.clear();
@@ -103,16 +105,18 @@ const getWidgetType = (element, initPhrase) => {
 const outputParams = (initPhrase, condition) => {
     let outputString;
 
-    //on initialization
-    if (initPhrase === CHAT || initPhrase === REPORT_RUMORS) {
-        outputString = showInput;
-    } else if (initPhrase === POLLS) {
-        outputString = hideInput;
-    }
-
-    //on receiving messages
-    if (condition) {
-        outputString = showInput;
+    if (initPhrase) {
+        //on initialization
+        if (initPhrase === CHAT || initPhrase === REPORT_RUMORS) {
+            outputString = showInput;
+        } else if (initPhrase === POLLS) {
+            outputString = hideInput;
+        }
+    } else {
+        //on receiving messages
+        condition > 0 ?
+            outputString = showInput :
+            outputString = hideInput;
     }
 
     return outputString;
@@ -134,8 +138,6 @@ let onMessageEvent = (event) => {
     const senderElement = $(".sender");
     if (stringParsed.event === "receivedMessageFromChannel") {
         if (isMobile()) {
-            console.debug("--------> Sent params for input: ", outputParams(null, toggleInput));
-            dispatchNative(JSON.stringify(outputParams(null, toggleInput)));
         } else {
             toggleInput <= 0 ? senderElement.hide() : senderElement.show();
         }
@@ -143,7 +145,7 @@ let onMessageEvent = (event) => {
 }
 
 // calls only on backend side
-window.dispatchWeb = (params) => {
+window["dispatchWeb"] = (params) => {
     const paramsObject = JSON.parse(params);
     const decodedPayloadString = window.atob(paramsObject.payload);
     const decodedPayloadObject = JSON.parse(decodedPayloadString);
@@ -154,7 +156,6 @@ window.dispatchWeb = (params) => {
             const initPayload = initPhrase + " " + decodedPayloadObject[LANGUAGE];
             initWebchat(initPayload);
             getWidgetType(chatContainer, initPhrase);
-            dispatchNative(JSON.stringify(outputParams(initPhrase)));
             console.debug("--------> Webchat is initialized");
             break;
         case SEND_TEXT:
@@ -170,7 +171,7 @@ window.dispatchWeb = (params) => {
     }
 }
 
-const dispatchWeb = window.dispatchWeb;
+const dispatchWeb = window["dispatchWeb"];
 
 const isPageLoaded = () => {
 
