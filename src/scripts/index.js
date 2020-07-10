@@ -5,7 +5,6 @@ import '../styles/styles.scss';
 import BotAvatarSVG from '../images/botAvatar.svg';
 
 const WebChat = require('../scripts/bot.js');
-const $ = require('jquery');
 
 const CHAT = "chat";
 const POLLS = "polls";
@@ -16,13 +15,6 @@ const LANGUAGE = "language";
 const SEND_TEXT = "sendText";
 const INIT_PHRASE = "initPhrase";
 const TEXT = "text";
-
-const showInput = {
-    "eventName": "showInput"
-};
-const hideInput = {
-    "eventName": "hideInput"
-}
 
 const chatContainer = document.getElementById("webchat");
 
@@ -39,8 +31,6 @@ const dispatchNative = function(s){
     window["dispatchNative"](s);
 }
 
-const messages = document.getElementsByClassName("messages-container")[0];
-
 const initWebchat = (initPayload) => {
     sessionStorage.clear();
     WebChat.default.init({
@@ -51,14 +41,18 @@ const initWebchat = (initPayload) => {
         channelUuid: 'b46efd0e-849d-45c9-b056-370a71be6d60',
         host: 'https://rapidpro.ilhasoft.mobi',
         profileAvatar: BotAvatarSVG,
+        customMessageDelay: (message) => {
+            let delay = message.length * 30;
+            if (delay > 2 * 1000) delay = 3 * 1000;
+            if (delay < 400) delay = 1000;
+            const messages = document.getElementById("messages");
+            setTimeout(() => {
+                messages.scrollTop = messages.scrollHeight;
+            }, 1500);
+
+            return delay;
+        },
         onSocketEvent: {
-            'message': (event) => {
-                try {
-                    onMessageEvent(event);
-                } catch (error) {
-                    return false;
-                }
-            },
             'connect': () => {
                 if (isMobile()) {
                     console.debug("--------> Connected to webchat");
@@ -101,53 +95,20 @@ const getWidgetType = (element, initPhrase) => {
     element.classList.add(widgetType);
 }
 
-// detect show or hide input
-const outputParams = (initPhrase, condition) => {
-    let outputString;
-
-    if (initPhrase) {
-        //on initialization
-        if (initPhrase === CHAT || initPhrase === REPORT_RUMORS) {
-            outputString = showInput;
-        } else if (initPhrase === POLLS) {
-            outputString = hideInput;
-        }
-    } else {
-        //on receiving messages
-        condition > 0 ?
-            outputString = showInput :
-            outputString = hideInput;
-    }
-
-    return outputString;
-}
-
-// detect type of messages (text question or quick replies)
-const getMessageType = () => {
-    const lastMessage = $("#webchat").find(".group-message").last();
-    const qr = $(lastMessage).find(".quickReplies-container");
-    return qr.length;
+var fromBinary = function(binary) {
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < bytes.length; i++) {
+    bytes[i] = binary.charCodeAt(i);
+  }
+  return String.fromCharCode(...new Uint16Array(bytes.buffer));
 }
 
 let message;
 
-// triggers on each received message
-let onMessageEvent = (event) => {
-    const stringParsed = JSON.parse(event);
-    const toggleInput = getMessageType();
-    const senderElement = $(".sender");
-    if (stringParsed.event === "receivedMessageFromChannel") {
-        if (isMobile()) {
-        } else {
-            toggleInput <= 0 ? senderElement.hide() : senderElement.show();
-        }
-    }
-}
-
 // calls only on backend side
 window["dispatchWeb"] = (params) => {
     const paramsObject = JSON.parse(params);
-    const decodedPayloadString = window.atob(paramsObject.payload);
+    const decodedPayloadString = fromBinary(window.atob(paramsObject.payload));
     const decodedPayloadObject = JSON.parse(decodedPayloadString);
 
     switch (paramsObject.eventName) {
@@ -172,36 +133,3 @@ window["dispatchWeb"] = (params) => {
 }
 
 const dispatchWeb = window["dispatchWeb"];
-
-const isPageLoaded = () => {
-
-    // listen DOM changes and add 'selected' class for chosen reply
-    const mutationObserver = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-            const replyElement = mutation.addedNodes[0];
-            if (replyElement && replyElement.tagName === 'DIV' && replyElement.classList.contains("group-message")) {
-                const reply = $(replyElement).find(".reply");
-                Array.prototype.forEach.call(reply, (elem) => {
-                    elem.addEventListener("mousedown", () => {
-                        $(elem).addClass("selected");
-                    });
-                    elem.addEventListener("touchstart", () => {
-                        $(elem).addClass("selected");
-                    })
-                });
-            }
-        });
-    });
-
-    // Starts listening for changes in the root HTML element of the page.
-    mutationObserver.observe(document.documentElement, {
-        attributes: true,
-        characterData: true,
-        childList: true,
-        subtree: true,
-        attributeOldValue: true,
-        characterDataOldValue: true
-    });
-}
-
-document.addEventListener("DOMContentLoaded", isPageLoaded);

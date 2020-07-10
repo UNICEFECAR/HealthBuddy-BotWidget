@@ -11,8 +11,8 @@ Can be used in 3 modes:
 ##Launch
 
 1. run 'npm install'
-2. run 'npm run build'
-3. run 'npm start'
+2. run 'npm run build' for production mode
+3. run 'npm start' for development mode
 4. open index.html from 'dist' folder
 
 

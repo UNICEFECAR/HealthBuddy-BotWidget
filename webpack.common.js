@@ -7,7 +7,6 @@ module.exports = {
         path: path.join(__dirname, "/dist"),
         filename: "index_bundle.js"
     },
-    devtool: false,
     module: {
         rules: [
             {
@@ -62,9 +61,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: "./src/index.html",
             filename: "./index.html"
-        })
+        }),
     ],
-    optimization: {
-        minimize: false
-    },
 };

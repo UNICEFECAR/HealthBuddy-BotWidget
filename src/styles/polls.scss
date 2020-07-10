@@ -1,5 +1,5 @@
 @import "variables";
-@import "font.css";
+@import "font";
 
 #webchat {
   &.polls {
@@ -86,62 +86,16 @@
         font-family: OpenSansRegular;
         font-size: $fontSize;
         color: $theme-color2;
-        padding: 19px 50px 19px 0;
+        padding: 19px 0;
         border-bottom: 1px dashed $theme-color3;
         border-radius: 0;
         justify-content: flex-start;
-        position: relative;
         text-align: left;
-
-        &:after {
-          content: "";
-          background-color: #F8F8F8;
-          position: absolute;
-          right: 0;
-          top: 50%;
-          display: block;
-          width: 34px;
-          height: 34px;
-          margin-top: -17px;
-          z-index: 1;
-          border-radius: 50%;
-        }
-
-        &.selected {
-          &:after {
-            background-color: $theme-color1;
-          }
-
-          &:before {
-            content: "";
-            background: url("../images/mark.svg") no-repeat center center;
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            margin-top: -7px;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            z-index: 2;
-          }
-        }
       }
     }
     @media screen and (max-width: 800px) {
       .messages-container {
         background-color: transparent;
-/*        position: relative;
-        &:before {
-          content: "";
-          display: block;
-          position: absolute;
-          top: 0;
-          right: 0;
-          background: #1CABE2;
-          opacity: 0.1;
-          border-radius: 100px;
-          transform: rotate(128.45deg);
-        }*/
       }
     }
   }
