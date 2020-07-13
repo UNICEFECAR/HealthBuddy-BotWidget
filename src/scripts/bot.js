@@ -16247,7 +16247,8 @@
                                         null == s.initialDelay && (s.initialDelay = 1e4), null == s.randomness && (s.randomness = 1e4), null == s.multiplier && (s.multiplier = 1.5), null == s.maxDelay && (s.maxDelay = 6e4)
                                     }
                                     null == this.options.subscriptionRetryOptions && (this.options.subscriptionRetryOptions = {}), this.options.authEngine ? this.auth = this.options.authEngine : this.auth = new a, this.options.codecEngine ? this.codec = this.options.codecEngine : this.codec = u, this.options.path = this.options.path.replace(/\/$/, "") + "/", this.options.query = e.query || {}, "string" == typeof this.options.query && (this.options.query = l.parse(this.options.query)), this.options.autoConnect && this.connect(), this._channelEmitter = new o, b && this.disconnectOnUnload && n.addEventListener && (this._unloadHandler = function() {
-                                        t.disconnect()
+                                        // This change is necessary for Android devices from 6.0 onwards because chat will disconnect after navigation to the external link.
+                                        //t.disconnect()
                                     }, n.addEventListener("beforeunload", this._unloadHandler, !1))
                                 };
                             w.prototype = Object.create(o.prototype), w.CONNECTING = w.prototype.CONNECTING = s.prototype.CONNECTING, w.OPEN = w.prototype.OPEN = s.prototype.OPEN, w.CLOSED = w.prototype.CLOSED = s.prototype.CLOSED, w.AUTHENTICATED = w.prototype.AUTHENTICATED = "authenticated", w.UNAUTHENTICATED = w.prototype.UNAUTHENTICATED = "unauthenticated", w.PENDING = w.prototype.PENDING = "pending", w.ignoreStatuses = d.socketProtocolIgnoreStatuses, w.errorStatuses = d.socketProtocolErrorStatuses, w.prototype._privateEventHandlerMap = {
