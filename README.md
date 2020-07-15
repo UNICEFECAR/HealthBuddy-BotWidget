@@ -38,16 +38,16 @@ Can be used in 3 modes:
 ````
 // chat
 {"eventName": "init", "payload": "base64 string"}  
-Payload: {"initPhrase": "chat", "language": "en"} 
+Payload: {"initPhrase": "chat", "language": "en", "userId": "user123"} 
 Example: {"eventName":"init", "payload": "eyJpbml0UGhyYXNlIjoiaGVsbG8gZW4ifQ=="}
 
 // poll 
 {"eventName": "init", "payload": "base64 string"}  
-Payload: {"initPhrase": "polls", "language": "en"} 
+Payload: {"initPhrase": "polls", "language": "en", "userId": "user123"} 
 
 // rumours 
 {"eventName": "init", "payload": "base64 string"}  
-Payload: {"initPhrase": "reportrumors", "language": "en"} 
+Payload: {"initPhrase": "reportrumors", "language": "en", "userId": "user123"} 
 ````
 
 ##### `Send input text:` 
@@ -62,5 +62,5 @@ Payload: {"text": "string"}
 ````
 Message: {"eventName": "operationResult", "payload": "base64 string"} 
 Payload: {"status": "success"} 
-Payload: {"status": "error", "errorCode": "1", "description": "Connection lost."}
+Payload: {"status": "error", "errorCode": "1", "description": "Connection lost"}
 ```` 

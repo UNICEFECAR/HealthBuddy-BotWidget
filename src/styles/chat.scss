@@ -3,16 +3,16 @@
 
 #webchat {
   &.chat {
-    .messages-container {
+    .push-messages-container {
       background-color: $chatBackground;
 
-      .message {
+      .push-message {
         margin: 10px 0;
       }
     }
 
-    .conversation-container {
-      .response {
+    .push-conversation-container {
+      .push-response {
         border-radius: 0 $border-radius $border-radius $border-radius;
         background-color: $theme-color1;
         font-family: OpenSansRegular;
@@ -22,18 +22,18 @@
         padding: 15px 19px;
       }
 
-      .group-message.from-response {
-        .message {
+      .push-group-message.push-from-response {
+        .push-message {
           &:not(:first-child):not(:last-child):not(:last-child) {
             margin-top: 8px;
             margin-bottom: 8px;
           }
 
-          &:not(:first-child) .response {
+          &:not(:first-child) .push-response {
             border-radius: $border-radius;
           }
 
-          &:first-child:not(:only-child) .response {
+          &:first-child:not(:only-child) .push-response {
             border-radius: 0 $border-radius $border-radius $border-radius;
           }
 
@@ -41,17 +41,17 @@
             margin-bottom: 12px;
           }
 
-          &:not(:first-child):not(:only-child).with-avatar {
+          &:not(:first-child):not(:only-child).push-with-avatar {
             margin-left: 43px;
           }
         }
       }
 
-      .replies {
+      .push-replies {
         margin: 15px 0 0 0;
       }
 
-      .reply {
+      .push-reply {
         width: 100%;
         border-radius: $border-radius;
         border: 2px solid $theme-color2;
@@ -62,7 +62,7 @@
         justify-content: center;
       }
 
-      .client {
+      .push-client {
         background-color: $theme-color2;
         border-radius: $border-radius;
         font-family: OpenSansRegular;
@@ -72,6 +72,7 @@
         padding: 15px 19px;
         position: relative;
         margin: 10px 46px 20px auto;
+        overflow: visible;
 
         &:before {
           content: "";
@@ -88,7 +89,7 @@
     }
 
     @media screen and (max-width: $mobileResolution) {
-      .messages-container {
+      .push-messages-container {
         background-color: transparent;
       }
     }

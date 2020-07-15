@@ -3,19 +3,19 @@
 
 #webchat {
   &.polls {
-    .messages-container {
+    .push-messages-container {
       background-color: $theme-color1;
-      .avatar {
+      .push-avatar {
         display: none;
       }
     }
 
-    .conversation-container {
-      .message {
+    .push-conversation-container {
+      .push-message {
         margin: 10px 0;
       }
 
-      .response {
+      .push-response {
         border-radius: $border-radius;
         font-family: OpenSansRegular;
         font-size: $fontSize;
@@ -25,17 +25,17 @@
         padding: 24px;
       }
 
-      .group-message.from-response {
-        .message {
+      .push-group-message.push-from-response {
+        .push-message {
           &:first-child:not(:only-child) {
             margin-bottom: 10px;
 
-            .response {
+            .push-response {
               border-radius: $border-radius;
             }
           }
 
-          &:not(:first-child):not(:only-child).with-avatar {
+          &:not(:first-child):not(:only-child).push-with-avatar {
             margin-left: 0;
           }
 
@@ -48,28 +48,28 @@
             margin-top: 0;
           }
 
-          &:not(:first-child) .response {
+          &:not(:first-child) .push-response {
             border-radius: $border-radius;
           }
 
-          &:not(:first-child):not(:last-child):not(:last-child) .response {
+          &:not(:first-child):not(:last-child):not(:last-child) .push-response {
             border-radius: $border-radius;
           }
         }
       }
 
-      .quickReplies-container {
+      .push-quickReplies-container {
         margin-top: 10px;
       }
 
-      .replies {
+      .push-replies {
         margin: 20px 0;
         background-color: $white-color;
         border-radius: $border-radius;
         padding: 16px 24px;
       }
 
-      .client {
+      .push-client {
         background-color: $white-color;
         width: 100%;
         border-radius: $border-radius;
@@ -79,7 +79,7 @@
         color: $theme-color2;
       }
 
-      .reply {
+      .push-reply {
         width: 100%;
         margin: 0;
         border: none;
@@ -94,7 +94,7 @@
       }
     }
     @media screen and (max-width: 800px) {
-      .messages-container {
+      .push-messages-container {
         background-color: transparent;
       }
     }

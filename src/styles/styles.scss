@@ -12,62 +12,57 @@ body {
 }
 
 #webchat {
-  .messages-container {
+  .push-messages-container {
     padding: 18px !important;
 
-    .avatar {
+    .push-avatar {
       width: $avatarSize;
       height: $avatarSize;
       border-radius: 0;
-      margin-top: 4px;
+      margin: 4px 6px 0 0;
     }
   }
 
-  .conversation-container {
-    .poweredby-container {
+  .push-conversation-container {
+    .push-poweredby-container {
       display: none;
     }
-    .header {
+    .push-header {
       background-color: $theme-color2;
     }
   }
-  .launcher {
+  .push-launcher {
     background-color: $theme-color2;
   }
 
   div#wave {
-    .dot{
+    .push-dot{
       background-color: $theme-color4;
     }
-    .dot:nth-child(2){
+    .push-dot:nth-child(2){
       background-color: $theme-color2;
     }
-    .dot:nth-child(3) {
+    .push-dot:nth-child(3) {
       background-color: $theme-color3;
     }
   }
 
   @media screen and (max-width: $mobileResolution) {
-/*    .widget-container.chat-open {
-      height: 50%;
-      top: 0;
-      bottom: initial;
-    }*/
-    .messages-container {
+    .push-messages-container {
       background-color: transparent;
     }
-    .conversation-container {
+    .push-conversation-container {
       box-shadow: none;
 
-      .header-and-loading {
+      .push-header-and-loading {
         display: none;
       }
 
-      .quickReplies-container {
+      .push-quickReplies-container {
         width: 100%;
       }
 
-      .sender {
+      .push-sender {
         display: none;
       }
     }
