@@ -14,7 +14,7 @@ const INIT = "init";
 const LANGUAGE = "language";
 const SEND_TEXT = "sendText";
 const INIT_PHRASE = "initPhrase";
-const CLEAR = "clear";
+const RESET = "reset";
 const TEXT = "text";
 const USER_ID = "userId";
 
@@ -133,7 +133,8 @@ window["dispatchWeb"] = (params) => {
                 console.debug("--------> Message is sent");
             }
             break;
-        case CLEAR:
+        case RESET:
+            WebChat.reload();
             WebChat.clear();
             break;
         default:
