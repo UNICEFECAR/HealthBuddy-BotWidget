@@ -18,6 +18,21 @@ const RESET = "reset";
 const TEXT = "text";
 const USER_ID = "userId";
 
+const operationSuccessful = {
+    "eventName": "operationResult",
+    "payload": {
+        "status": "success",
+        "description": "Connected to webchat"
+    }
+}
+const operationFailed = {
+    "eventName": "operationResult",
+    "payload": {
+        "status": "error",
+        "description": "Disconnected from webchat"
+    }
+}
+
 const chatContainer = document.getElementById("webchat");
 
 const isMobile = () => {
@@ -37,11 +52,11 @@ const initWebchat = (initPayload, sessionId) => {
     sessionStorage.clear();
     WebChat.default.init({
         initPayload: initPayload,
-        socketUrl: "https://socket.push.al",
+        socketUrl: process.env.socketUrl,
+        channelUuid: process.env.channelUuid,
+        host: process.env.host,
         title: "HealthBuddy chatbot",
         selector: "#webchat",
-        channelUuid: 'b46efd0e-849d-45c9-b056-370a71be6d60',
-        host: 'https://rapidpro.ilhasoft.mobi',
         profileAvatar: BotAvatarSVG,
         sessionId: sessionId,
         customMessageDelay: (message) => {
@@ -59,13 +74,13 @@ const initWebchat = (initPayload, sessionId) => {
             'connect': () => {
                 if (isMobile()) {
                     console.debug("--------> Connected to webchat");
-                    dispatchNative('{"eventName": "operationResult", "payload": "eyJzdGF0dXMiOiAic3VjY2VzcyJ9"}'); //success
+                    dispatchNative(fromObject(operationSuccessful));
                 }
             },
             'disconnect': () => {
                 if (isMobile()) {
                     console.debug("--------> Disconnected from webchat");
-                    dispatchNative('{"eventName": "operationResult", "payload": "eyJzdGF0dXMiOiAiZXJyb3IifQ=="}');  //error
+                    dispatchNative(fromObject(operationFailed));
                 }
             },
         },
@@ -105,6 +120,13 @@ const fromBinary = function(binary) {
         bytes[i] = binary.charCodeAt(i);
     }
     return String.fromCharCode(...new Uint16Array(bytes.buffer));
+}
+
+const fromObject = function(obj) {
+    let resultObject = {...obj};
+    let objJsonStr = JSON.stringify(resultObject.payload);
+    resultObject.payload = Buffer.from(objJsonStr).toString("base64");
+    return JSON.stringify(resultObject);
 }
 
 let message;

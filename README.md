@@ -25,15 +25,6 @@ Can be used in 3 modes:
 
 **Events which are used as parameters in functions mentioned above:**
  
-#####`Loaded:` 
- `{"eventName": "loaded"} `
-
-##### `Show input:` 
-`{"eventName": "showInput"} `
-
-##### `Hide input:` 
-`{"eventName": "hideInput"}` 
-
 ##### `Init:` 
 ````
 // chat
@@ -62,5 +53,5 @@ Payload: {"text": "string"}
 ````
 Message: {"eventName": "operationResult", "payload": "base64 string"} 
 Payload: {"status": "success"} 
-Payload: {"status": "error", "errorCode": "1", "description": "Connection lost"}
+Payload: {"status": "error", "description": "Connection lost"}
 ```` 
