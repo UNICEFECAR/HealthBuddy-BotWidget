@@ -10,6 +10,8 @@ trigger:
 variables:
   azSubscription: 'hbcovid-dev1'
   dev1_storageaccount_mob: 'saeuwdev1hbcovid01mob'
+  bot_widget_source_config: 'bot_widget.cfg'
+  bot_widget_dest_config: '.env'  
 
 stages:
 
@@ -23,9 +25,29 @@ stages:
 
     steps:
 
+    - task: DownloadSecureFile@1
+      name: SecuredConfig
+      displayName: 'Download Secured Config'
+      inputs:
+        secureFile: $(bot_widget_source_config)
+
+
+    - script: |
+        echo Deleting "$(bot_widget_dest_config)" file
+        del $(bot_widget_dest_config)
+        dir
+        echo Copying new "$(bot_widget_dest_config)" file
+        echo Source: $(SecuredConfig.secureFilePath)
+        echo Destination: $(bot_widget_dest_config)
+        copy $(SecuredConfig.secureFilePath) $(bot_widget_dest_config)
+        dir
+      displayName: Updating Bot Widget config
+
+
     - script: |
         npm install
       displayName: 'npm install'
+
 
     - script: |
         npm run build
