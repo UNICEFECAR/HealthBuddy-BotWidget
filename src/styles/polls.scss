@@ -91,6 +91,9 @@
         border-radius: 0;
         justify-content: flex-start;
         text-align: left;
+        &:last-child {
+          border-bottom: none;
+        }
       }
     }
     @media screen and (max-width: 800px) {
