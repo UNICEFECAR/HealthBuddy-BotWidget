@@ -91,7 +91,6 @@ const initWebchat = (initPayload, sessionId) => {
     WebChat.clear();
     console.debug("--------> History was cleared");
     WebChat.open();
-    WebChat.send(initPayload); // start conversation
     console.debug("--------> Init payload was sent: ", initPayload);
 }
 
