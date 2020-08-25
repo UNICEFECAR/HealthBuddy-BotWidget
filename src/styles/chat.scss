@@ -58,8 +58,9 @@
         font-family: OpenSansRegular;
         font-size: $fontSize;
         color: $theme-color2;
-        padding: 15px;
+        padding: 9px 15px;
         justify-content: center;
+        min-height: initial;
       }
 
       .push-client {
