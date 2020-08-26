@@ -4,7 +4,7 @@
 #webchat {
   &.polls {
     .push-messages-container {
-      background-color: $theme-color1;
+      background-color: transparent;
       .push-avatar {
         display: none;
       }
@@ -94,11 +94,6 @@
         &:last-child {
           border-bottom: none;
         }
-      }
-    }
-    @media screen and (max-width: 800px) {
-      .push-messages-container {
-        background-color: transparent;
       }
     }
   }

@@ -4,7 +4,7 @@
 #webchat {
   &.reportrumors {
     .push-messages-container {
-      background-color: $theme-color1;
+      background-color: transparent;
       .push-avatar {
         display: none;
       }
@@ -84,11 +84,6 @@
         padding: 9px 15px;
         margin: 5px 20px;
         justify-content: center;
-      }
-    }
-    @media screen and (max-width: $mobileResolution) {
-      .push-messages-container {
-        background-color: transparent;
       }
     }
   }

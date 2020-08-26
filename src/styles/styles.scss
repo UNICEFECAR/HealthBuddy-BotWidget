@@ -5,15 +5,20 @@
 
 body {
   font-family: OpenSansRegular, Verdana, sans-serif;
-
-  @media screen and (max-width: $mobileResolution) {
-    background-color: transparent;
-  }
+  background-color: transparent;
 }
 
 #webchat {
+  .push-widget-container.push-chat-open {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    max-width: none;
+    width: 100%;
+  }
   .push-messages-container {
     padding: 18px !important;
+    background-color: transparent;
 
     .push-avatar {
       width: $avatarSize;
@@ -24,6 +29,16 @@ body {
   }
 
   .push-conversation-container {
+    box-shadow: none;
+    .push-header-and-loading {
+      display: none;
+    }
+    .push-quickReplies-container {
+      width: 100%;
+    }
+    .push-sender {
+      display: none;
+    }
     .push-poweredby-container {
       display: none;
     }
@@ -35,7 +50,7 @@ body {
     }
   }
   .push-launcher {
-    background-color: $theme-color2;
+    display: none;
   }
 
   div#push-wave {
@@ -50,25 +65,5 @@ body {
     }
   }
 
-  @media screen and (max-width: $mobileResolution) {
-    .push-messages-container {
-      background-color: transparent;
-    }
-    .push-conversation-container {
-      box-shadow: none;
-
-      .push-header-and-loading {
-        display: none;
-      }
-
-      .push-quickReplies-container {
-        width: 100%;
-      }
-
-      .push-sender {
-        display: none;
-      }
-    }
-  }
 }
 
