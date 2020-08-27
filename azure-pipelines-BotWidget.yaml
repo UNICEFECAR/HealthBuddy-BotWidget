@@ -8,10 +8,7 @@ trigger:
 
 
 variables:
-  azSubscription: 'hbcovid-dev1'
-  dev1_storageaccount_mob: 'saeuwdev1hbcovid01mob'
-  bot_widget_source_config: 'bot_widget.cfg'
-  bot_widget_dest_config: '.env'  
+  - group: HealthBuddy-BotWidget
 
 stages:
 
