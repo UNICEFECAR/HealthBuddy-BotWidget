@@ -73,7 +73,7 @@ stages:
   jobs:
   - deployment: deploy
     displayName: Deploy dev1-chatbot
-    environment: 'dev1-chatbot'
+    environment: 'Healthbuddy-chatbot'
     pool:
       vmImage: 'vs2017-win2016'
     strategy:
