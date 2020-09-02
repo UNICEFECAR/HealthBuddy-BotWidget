@@ -70,13 +70,13 @@
       }
 
       .push-client {
-        background-color: $white-color;
+        background-color: $theme-color2;
         width: 100%;
         border-radius: $border-radius;
         font-family: OpenSansRegular;
         font-size: $fontSize;
         line-height: 26px;
-        color: $theme-color2;
+        color: $white-color;
       }
 
       .push-reply {
