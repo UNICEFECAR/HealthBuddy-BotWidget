@@ -2,7 +2,7 @@ trigger: none
 
 
 variables:
-  - group: HealthBuddy-BotWidget
+  - group: HealthBuddy-BotWidget.Prod
 
 stages:
 
@@ -59,7 +59,7 @@ stages:
         targetPath: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
 
 
-- stage: dev1
+- stage: deploy
   dependsOn:
   - build  
   condition: succeeded('build')
