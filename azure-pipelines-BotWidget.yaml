@@ -1,14 +1,8 @@
-trigger:
-  branches:
-    include:
-    - develop
-  paths:
-    include:
-    - src
+trigger: none
 
 
 variables:
-  - group: HealthBuddy-BotWidget
+  - group: HealthBuddy-BotWidget.QA
 
 stages:
 
