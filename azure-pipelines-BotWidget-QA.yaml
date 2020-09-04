@@ -1,0 +1,111 @@
+trigger:
+  branches:
+    include:
+    - develop
+  paths:
+    include:
+    - src
+
+
+variables:
+  - group: HealthBuddy-BotWidget.QA
+
+stages:
+
+- stage: build
+  displayName: build
+
+  jobs:
+  - job: npmbuild
+    pool:
+      vmImage: 'vs2017-win2016'
+
+    steps:
+
+    - task: DownloadSecureFile@1
+      name: SecuredConfig
+      displayName: 'Download Secured Config'
+      inputs:
+        secureFile: $(bot_widget_source_config)
+
+
+    - script: |
+        echo Deleting "$(bot_widget_dest_config)" file
+        del $(bot_widget_dest_config)
+        dir
+        echo Copying new "$(bot_widget_dest_config)" file
+        echo Source: $(SecuredConfig.secureFilePath)
+        echo Destination: $(bot_widget_dest_config)
+        copy $(SecuredConfig.secureFilePath) $(bot_widget_dest_config)
+        dir
+      displayName: Updating Bot Widget config
+
+
+    - script: |
+        npm install
+      displayName: 'npm install'
+
+
+    - script: |
+        npm run build
+      displayName: 'npm run build'
+      
+    - task: ArchiveFiles@2
+      displayName: 'Archive files'
+      inputs:
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist'
+        includeRootFolder: true
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+        replaceExistingArchive: true
+
+    - task: PublishPipelineArtifact@0
+      displayName: 'Publish artifacts'
+      inputs:
+        targetPath: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+
+
+- stage: deploy
+  dependsOn:
+  - build  
+  condition: succeeded('build')
+
+  jobs:
+  - deployment: deploy
+    displayName: Deploy dev1-chatbot
+    environment: 'Healthbuddy-chatbot'
+    pool:
+      vmImage: 'vs2017-win2016'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - task: DownloadPipelineArtifact@1
+              displayName: 'Download Pipeline Artifacts'
+              inputs:
+                buildType: 'current'
+            - task: ExtractFiles@1
+              displayName: Extract Files
+              inputs:
+                archiveFilePatterns: '$(System.ArtifactsDirectory)/drop/$(Build.BuildId).zip'
+                destinationFolder: '$(System.DefaultWorkingDirectory)/unzip/$(Build.BuildId)'
+                cleanDestinationFolder: true
+
+            - task: AzureCLI@2
+              displayName: Delete old content from BLOB $web
+              inputs:
+                azureSubscription: $(azSubscription)
+                scriptType: ps
+                scriptLocation: inlineScript
+                inlineScript: |
+                  az storage blob delete-batch --account-name $(dev1_storageaccount_mob) --source `$web 
+
+            - task: AzureFileCopy@3
+              displayName: Deploy to BLOB $web
+              inputs:
+                SourcePath: '$(System.DefaultWorkingDirectory)/unzip/$(Build.BuildId)/dist'
+                azureSubscription: $(azSubscription)
+                Destination: 'AzureBlob'
+                storage: $(dev1_storageaccount_mob)
+                ContainerName: '$web'
+
