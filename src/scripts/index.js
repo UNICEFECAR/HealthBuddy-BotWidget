@@ -48,6 +48,8 @@ const dispatchNative = function(s){
     window["dispatchNative"](s);
 }
 
+const messages = []
+
 const initWebchat = (initPayload, sessionId) => {
     sessionStorage.clear();
     WebChat.default.init({
@@ -60,15 +62,11 @@ const initWebchat = (initPayload, sessionId) => {
         profileAvatar: BotAvatarSVG,
         sessionId: sessionId,
         customMessageDelay: (message) => {
-            let delay = message.length * 30;
-            if (delay > 2 * 1000) delay = 3 * 1000;
-            if (delay < 400) delay = 1000;
-            const messages = document.getElementById("push-messages");
-            setTimeout(() => {
-                messages.scrollTop = messages.scrollHeight;
-            }, 1500);
-
-            return delay;
+            messages.push(message);
+            if (messages.length == 1) {
+                return 0;
+            }
+            return calcDelay(messages[messages.length - 2] || message);
         },
         onSocketEvent: {
             'connect': () => {
@@ -113,6 +111,12 @@ const getWidgetType = (element, initPhrase) => {
     }
     element.classList.add(widgetType);
 }
+
+const calcDelay = function(message) {
+    let delay = message.length * 50;
+    if (delay < 400) delay = 1000;
+    return delay;
+  }
 
 const fromBinary = function(binary) {
     const bytes = new Uint8Array(binary.length);
