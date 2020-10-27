@@ -48,9 +48,8 @@ const dispatchNative = function(s){
     window["dispatchNative"](s);
 }
 
-const messages = []
-
 const initWebchat = (initPayload, sessionId) => {
+    const messages = [];
     sessionStorage.clear();
     WebChat.default.init({
         initPayload: initPayload,
